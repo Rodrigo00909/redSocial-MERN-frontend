@@ -46,7 +46,7 @@ const Form = ({currentId, setCurrentId}) => {
         setCurrentId(null);
         setPostData({author: '', title: '', message: '', tags: '', image: ''});
     }
-    
+
     return (
         <Paper className={classes.paper}>
             <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
@@ -54,7 +54,7 @@ const Form = ({currentId, setCurrentId}) => {
                 <TextField name="author" variant="outlined" label="Author" fullWidth value={postData.author} onChange={(e) => setPostData({  ...postData, author: e.target.value })} />
                 <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({  ...postData, title: e.target.value })} />
                 <TextField name="message" variant="outlined" label="Message" fullWidth value={postData.message} onChange={(e) => setPostData({  ...postData, message: e.target.value })} />
-                <TextField name="tags" variant="outlined" label="Tags" fullWidth value={postData.tags} onChange={(e) => setPostData({  ...postData, tags: e.target.value })} />
+                <TextField name="tags" variant="outlined" label="Tags" fullWidth value={postData.tags} onChange={(e) => setPostData({  ...postData, tags: e.target.value.split(',') })} />
                 <div className={classes.fileInput}>
                     <FileBase type="file" multiple={false} onDone={({base64}) => setPostData({...postData, image: base64})}/>
                 </div>
